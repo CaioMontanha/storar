@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STORAR - Dashboard (Erro no Carregamento)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            canvas: '#F7F8FA',
+            borderline: '#E5E7EB',
+            heading: '#111827',
+            muted: '#6B7280',
+          },
+          borderRadius: {
+            DEFAULT: '8px',
+            'md': '8px',
+            'lg': '8px',
+          },
+          boxShadow: {
+            subtle: '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #F7F8FA;
+      font-family: 'Inter', sans-serif;
+      color: #111827;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .skeleton {
+      background: linear-gradient(90deg, #E5E7EB 25%, #F3F4F6 50%, #E5E7EB 75%);
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.8s infinite ease-in-out;
+    }
+    @keyframes skeleton-shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex bg-[#F7F8FA] text-[#111827] antialiased">
+<!-- Sidebar fixa -->
+<aside class="w-64 bg-white border-r border-[#E5E7EB] flex flex-col fixed inset-y-0 left-0 z-20">
+<!-- Logo STORAR -->
+<div class="h-16 px-6 flex items-center border-b border-[#E5E7EB]">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-base tracking-wider shadow-sm">
+          S
+        </div>
+<div class="flex flex-col">
+<span class="text-lg font-bold tracking-tight text-[#111827] leading-none">STORAR</span>
+<span class="text-[11px] font-medium text-[#6B7280] tracking-wide mt-0.5">Porto de Galinhas</span>
+</div>
+</div>
+</div>
+<!-- Navegação -->
+<nav class="p-4 space-y-1.5 flex-1">
+<!-- Item Ativo: Dashboard -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-semibold rounded-lg bg-blue-50 text-blue-700 transition-colors" href="#">
+<svg class="w-5 h-5 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Dashboard</span>
+</a>
+<!-- Item Inativo: Produtos -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 text-sm font-medium rounded-lg text-[#6B7280] hover:text-[#111827] hover:bg-gray-100/70 transition-colors" href="#">
+<svg class="w-5 h-5 text-[#9CA3AF] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Produtos</span>
+</a>
+</nav>
+<!-- Rodapé da sidebar -->
+<div class="p-4 border-t border-[#E5E7EB]">
+<div class="flex items-center gap-3 px-2 py-2">
+<div class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-xs font-semibold text-gray-700">
+          PG
+        </div>
+<div class="flex flex-col min-w-0">
+<span class="text-xs font-semibold text-[#111827] truncate">Loja Beira-Mar</span>
+<span class="text-[11px] text-[#6B7280] truncate">Terminal Vila • Operando</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Conteúdo Principal -->
+<main class="ml-64 flex-1 p-6 md:p-8 max-w-7xl">
+<!-- Header da Página -->
+<header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-[#E5E7EB]">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-bold text-[#111827] tracking-tight">Dashboard</h1>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-50 text-red-600 border border-red-200"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>Falha na sincronização</span>
+</div>
+<p class="text-sm text-[#6B7280] mt-1">Acompanhe os produtos que estão próximos de acabar</p>
+</div>
+<!-- Janela de Previsão -->
+<div class="flex items-center bg-white p-1 rounded-lg border border-[#E5E7EB] shadow-subtle self-start sm:self-auto"><span class="text-xs font-medium text-[#6B7280] px-2.5 py-1 hidden lg:inline">Previsão:</span>
+<button class="px-3 py-1.5 text-xs font-medium text-[#6B7280] hover:text-[#111827] rounded-md transition-colors" type="button">7 dias</button>
+<button class="px-3 py-1.5 text-xs font-semibold bg-blue-600 text-white rounded-md shadow-sm" type="button">14 dias</button>
+<button class="px-3 py-1.5 text-xs font-medium text-[#6B7280] hover:text-[#111827] rounded-md transition-colors" type="button">30 dias</button></div>
+</header>
+<!-- Quatro Cards com Skeleton Loaders -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-6">
+<!-- Card 1: Críticos -->
+<div class="bg-white p-5 rounded-lg border border-[#E5E7EB] shadow-subtle flex flex-col justify-between h-[126px]">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase tracking-wider text-red-600">Críticos</span>
+<span class="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+</span>
+</div>
+<div class="mt-2 space-y-2"><div class="text-2xl font-bold text-[#111827] leading-none">—</div>
+<div class="text-xs text-[#6B7280]">Dados indisponíveis</div></div>
+</div>
+<!-- Card 2: Em atenção -->
+<div class="bg-white p-5 rounded-lg border border-[#E5E7EB] shadow-subtle flex flex-col justify-between h-[126px]">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase tracking-wider text-amber-600">Em atenção</span>
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+</span>
+</div>
+<div class="mt-2 space-y-2"><div class="text-2xl font-bold text-[#111827] leading-none">—</div>
+<div class="text-xs text-[#6B7280]">Dados indisponíveis</div></div>
+</div>
+<!-- Card 3: OK -->
+<div class="bg-white p-5 rounded-lg border border-[#E5E7EB] shadow-subtle flex flex-col justify-between h-[126px]">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase tracking-wider text-emerald-600">OK</span>
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500/20 border border-emerald-500 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+</span>
+</div>
+<div class="mt-2 space-y-2"><div class="text-2xl font-bold text-[#111827] leading-none">—</div>
+<div class="text-xs text-[#6B7280]">Dados indisponíveis</div></div>
+</div>
+<!-- Card 4: Sem giro -->
+<div class="bg-white p-5 rounded-lg border border-[#E5E7EB] shadow-subtle flex flex-col justify-between h-[126px]">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Sem giro</span>
+<span class="w-2.5 h-2.5 rounded-full bg-gray-400/20 border border-gray-400 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+</span>
+</div>
+<div class="mt-2 space-y-2"><div class="text-2xl font-bold text-[#111827] leading-none">—</div>
+<div class="text-xs text-[#6B7280]">Dados indisponíveis</div></div>
+</div>
+</section>
+<!-- Seção da Tabela com Filtros e Skeletons -->
+<section class="bg-white rounded-lg border border-[#E5E7EB] shadow-subtle overflow-hidden">
+<!-- Barra Superior da Tabela: Título e Filtros desabilitados -->
+<div class="p-5 border-b border-[#E5E7EB] flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-base font-bold text-[#111827]">Produtos mais urgentes</h2>
+<p class="text-xs text-[#6B7280] mt-0.5">Ordenados pela previsão estimada de ruptura</p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+<!-- Campo de Busca Desabilitado -->
+<div class="relative min-w-[240px]">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<input class="w-full pl-9 pr-3 py-2 text-xs bg-gray-50 border border-[#E5E7EB] rounded-lg text-gray-400 placeholder-gray-400 cursor-not-allowed select-none focus:outline-none" disabled="" placeholder="Buscar produto..." type="text"/>
+</div>
+<!-- Filtro por Status Desabilitado -->
+<div class="relative min-w-[140px]">
+<select class="w-full px-3 py-2 text-xs bg-gray-50 border border-[#E5E7EB] rounded-lg text-gray-400 cursor-not-allowed select-none appearance-none focus:outline-none" disabled="">
+<option>Todos os status</option>
+<option>Crítico</option>
+<option>Em atenção</option>
+<option>OK</option>
+<option>Sem giro</option>
+<option>Esgotado</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none text-gray-400">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<!-- Tabela Principal com Colunas Reais e Linhas Skeleton -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50/80 border-b border-[#E5E7EB] text-[11px] font-semibold text-[#6B7280] uppercase tracking-wider">
+<th class="py-3 px-5" scope="col">Produto</th>
+<th class="py-3 px-5" scope="col">Estoque</th>
+<th class="py-3 px-5" scope="col">Média/dia</th>
+<th class="py-3 px-5" scope="col">Previsão</th>
+<th class="py-3 px-5" scope="col">Pedir até</th>
+<th class="py-3 px-5 text-right w-16" scope="col">
+<span class="sr-only">Ações</span>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E5E7EB]"><tr>
+<td class="py-16 px-6 text-center" colspan="6">
+<div class="max-w-sm mx-auto flex flex-col items-center justify-center text-center">
+<div class="w-12 h-12 rounded-full bg-red-50 border border-red-100 flex items-center justify-center text-red-600 mb-3.5 shadow-sm">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="text-base font-semibold text-[#111827]">Não foi possível carregar os produtos</h3>
+<p class="text-sm text-[#6B7280] mt-1 max-w-xs">Ocorreu um erro ao consultar os dados. Tente novamente.</p>
+<button class="mt-5 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-colors focus:outline-none" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+                    Tentar novamente
+                  </button>
+</div>
+</td>
+</tr></tbody>
+</table>
+</div>
+<!-- Paginação / Status de Carregamento Inferior -->
+<div class="px-5 py-3 bg-gray-50/80 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#6B7280]"><div class="flex items-center gap-2 text-xs text-[#6B7280]">
+<span class="w-2 h-2 rounded-full bg-red-500"></span>
+<span>Nenhum registro carregado</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 text-xs font-medium text-gray-400 bg-gray-100 rounded-md cursor-not-allowed" disabled="" type="button">Anterior</button>
+<button class="px-3 py-1.5 text-xs font-medium text-gray-400 bg-gray-100 rounded-md cursor-not-allowed" disabled="" type="button">Próximo</button>
+</div></div>
+</section>
+</main>
+</body>
+</html>
