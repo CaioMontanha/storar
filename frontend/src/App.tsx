@@ -9,7 +9,7 @@ const date = (s: string | null) => s ? new Date(`${s}T12:00:00`).toLocaleDateStr
 
 export default function App() {
   const [stores, setStores] = useState<Store[]>([]), [storeId, setStoreId] = useState(1), [storeModal, setStoreModal] = useState(false), [storeMenuOpen, setStoreMenuOpen] = useState(false), [editingStore, setEditingStore] = useState<Store | null>(null);
-  const [portfolioUrl, setPortfolioUrl] = useState(() => localStorage.getItem('storar.portfolio.url') || import.meta.env.VITE_PORTFOLIO_URL || ''), [portfolioModal, setPortfolioModal] = useState(false);
+  const [portfolioUrl, setPortfolioUrl] = useState(() => localStorage.getItem('storar.portfolio.url') || import.meta.env.VITE_PORTFOLIO_URL || 'https://caio-montanha.vercel.app/'), [portfolioModal, setPortfolioModal] = useState(false);
   const [products, setProducts] = useState<Product[]>([]), [windowDays, setWindowDays] = useState(14), [search, setSearch] = useState(''), [filter, setFilter] = useState('');
   const [selected, setSelected] = useState<number | null>(null), [sales, setSales] = useState<Sale[]>([]), [loading, setLoading] = useState(true), [modal, setModal] = useState(false), [notice, setNotice] = useState(''), [error, setError] = useState('');
   useEffect(() => { void api.stores().then(list => { setStores(list); if (list.length) setStoreId(list[0].id); }); }, []);
